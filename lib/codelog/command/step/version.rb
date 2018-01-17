@@ -17,6 +17,7 @@ module Codelog
 
         def run
           abort('ERROR: Please enter a version number') if @version.nil?
+          puts Codelog::Config.filename
           chdir Dir.pwd do
             create_version_changelog_from changes_hash
           end
@@ -36,7 +37,7 @@ module Codelog
 
         def create_version_changelog_from(changes_hash)
           File.open("changelogs/releases/#{@version}.md", 'a') do |line|
-            line.puts "## #{@version}"
+            line.puts "## #{Codelog::Config.apply_formatting_to_version(@version)}"
             changes_hash.each do |category, changes|
               line.puts "### #{category}"
               changes.each { |change| line.puts "- #{change}" }
