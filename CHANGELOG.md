@@ -1,8 +1,42 @@
 # Changelog
-  All notable changes to this project will be documented in this file.
-  The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-  and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
-            
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## 0.5.0
+### Added
+- Ability to edit the created changefile by running `codelog new <-e|--edit>`
+
+---
+## 0.4.0
+### Fixed
+- Nested YML entries were print as hashes. Now codelog generates a nested Markdown
+
+---
+## 0.3.1
+### Fixed
+- Non-default input date format
+
+---
+## 0.3.0
+### Changed
+- Human-readable timestamp for the change files
+- Altered setup to print message instead of aborting when creating files
+- Changelog header is now configurable through 'changelogs/header.txt'
+- Insulated abort messages within Codelog::Messages
+- Blocked attempt to release a changelog with no changes
+- Blocked attempt to release repeated versions from a changelog
+
+### Added
+- Configurable filename
+- Configurable input and output date formats
+- Enable/Disable 'datestamps' within version tag
+- Version prefix, version suffix and date prefix within version tag
+- Previous existing changelog can now be merged upon 'codelog setup'
+- Message after the release command
+- Datestamps along with version tag (synthax codelog release [x.y.z] <DATE>)
+
+---
 ## 0.2.3
 ### Changed
 - Setup command now creates a .gitkeep file on /changelogs/releases folder

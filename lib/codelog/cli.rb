@@ -1,4 +1,6 @@
 require 'thor'
+require 'date'
+require 'yaml'
 
 module Codelog
   class CLI < Thor
@@ -8,14 +10,16 @@ module Codelog
     end
 
     desc 'new', 'Generate a file from the template for the unreleased changes'
-    method_option :change, aliases: '-c', default: true, desc: 'Create a change file'
+    method_option :edit, desc: 'Opens the default system editor after creating a changefile',
+                         aliases: '-e', type: :boolean
     def new
-      Codelog::Command::New.run
+      Codelog::Command::New.run options
     end
 
-    desc 'release [VERSION]', 'Generate new release updating changelog'
-    def release(version_number)
-      Codelog::Command::Release.run version_number
+    desc 'release [VERSION] <RELEASE_DATE>', 'Generate new release updating changelog'
+    def release(version_number, release_date =
+                Date.today.strftime(Codelog::Config.date_input_format))
+      Codelog::Command::Release.run version_number, release_date
     end
   end
 end

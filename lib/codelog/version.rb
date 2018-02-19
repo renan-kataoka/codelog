@@ -1,3 +1,3 @@
 module Codelog
-  VERSION = '0.2.3'.freeze
+  VERSION = '0.5.0'.freeze
 end
