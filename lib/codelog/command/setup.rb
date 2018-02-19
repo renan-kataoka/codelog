@@ -5,8 +5,7 @@ module Codelog
     class Setup
       include FileUtils
 
-      TEMPLATE_FILE_PATH = File.dirname(__FILE__).concat('/../../fixtures/template.yml')
-      CONFIG_FILE_PATH = File.dirname(__FILE__).concat('/../../fixtures/codelog.yml')
+      TEMPLATE_FILE_PATH = File.dirname(__FILE__) + '/../../fixtures/template.yml'
 
       def self.run
         Codelog::Command::Setup.new.run
@@ -21,7 +20,6 @@ module Codelog
           system! 'mkdir changelogs/unreleased'
           system! 'mkdir changelogs/releases'
           system! "cp #{TEMPLATE_FILE_PATH} changelogs/template.yml"
-          system! "cp #{CONFIG_FILE_PATH} changelogs/codelog.yml"
           system! 'touch changelogs/unreleased/.gitkeep'
           system! 'touch changelogs/releases/.gitkeep'
         end
